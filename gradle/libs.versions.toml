@@ -9,19 +9,22 @@ lifecycleRuntimeKtx = "2.9.3"
 activityCompose = "1.11.0"
 composeBom = "2024.09.00"
 hilt = "2.48"
+mockkAndroid = "1.14.5"
+navigationTesting = "2.9.5"
 retrofit = "2.9.0"
 okhttp = "4.12.0"
 coroutines = "1.7.3"
 navigation = "2.7.5"
 viewmodel = "2.7.0"
 gson = "2.10.1"
-mockito = "5.6.0"
-mockitoKotlin = "5.1.0"
+mockito = "4.11.0"
+mockitoKotlin = "4.1.0"
 coroutinesTest = "1.7.3"
 turbine = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navigationTesting" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -42,6 +45,7 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.1.0" }
 
 # Networking
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkAndroid" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }

@@ -39,6 +39,27 @@ android {
     buildFeatures {
         compose = true
     }
+
+
+    // Add this block to exclude duplicate license files
+    packagingOptions {
+        resources {
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/LICENSE.txt"
+            excludes += "META-INF/NOTICE.md"
+            excludes += "META-INF/NOTICE.txt"
+            excludes += "META-INF/ASL2.0"
+            excludes += "META-INF/LGPL2.1"
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force("junit:junit:4.13.2")
+        exclude(group = "org.junit.jupiter")
+        exclude(group = "org.junit.platform")
+    }
 }
 
 dependencies {
@@ -75,10 +96,16 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     
     // Testing
-    testImplementation(libs.junit)
+    testImplementation(libs.junit){
+        exclude(group = "org.junit.jupiter")
+    }
     testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.core){
+        exclude(group = "org.junit.jupiter")
+    }
+    testImplementation(libs.mockito.kotlin) {
+        exclude(group = "org.junit.jupiter")
+    }
     testImplementation(libs.turbine)
     
     androidTestImplementation(libs.androidx.junit)
@@ -87,4 +114,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.androidx.navigation.testing)
 }
+
+
